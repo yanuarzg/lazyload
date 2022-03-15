@@ -1,10 +1,10 @@
     /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = &#39;catatandroid&#39;;
+    var disqus_shortname = 'catatandroid';
  
-    /* * * DON&#39;T EDIT BELOW THIS LINE * * */
+    /* * * DON'T EDIT BELOW THIS LINE * * */
     (function () {
-        var s = document.createElement(&#39;script&#39;); s.async = true;
-        s.type = &#39;text/javascript&#39;;
-        s.src = &#39;//&#39; + disqus_shortname + &#39;.disqus.com/count.js&#39;;
-        (document.getElementsByTagName(&#39;HEAD&#39;)[0] || document.getElementsByTagName(&#39;BODY&#39;)[0]).appendChild(s);
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
