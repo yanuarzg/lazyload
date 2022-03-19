@@ -1,0 +1,2 @@
+/*! halamanjudul */
+$(document).ready(function(){var e=$("a.blog-pager-older-link").attr("href");$("a.blog-pager-older-link").load(e+" .post-title:first",function(){var e=$("a.blog-pager-older-link").text();$("a.blog-pager-older-link").text(e)});e=$("a.blog-pager-newer-link").attr("href");$("a.blog-pager-newer-link").load(e+" .post-title:first",function(){var e=$("a.blog-pager-newer-link:first").text();$("a.blog-pager-newer-link").text(e)})});
