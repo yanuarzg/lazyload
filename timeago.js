@@ -1,15 +1,4 @@
 /*! timeago kangrian */
-$(function(){
-        $('[datetime]:not(.timeago)').each(function() {
-            var $this = $(this);
-            var data_timeago = $this.attr('datetime');
-            $this.addClass('timeago');
-            if(!$this.attr('title')) {
-                $this.attr('title', data_timeago);
-            }
-            $this.text(get_timeago(data_timeago));
-        });
-    });
     function get_timeago(t) {
         var e = new Date(t),
             a = 36e5,
