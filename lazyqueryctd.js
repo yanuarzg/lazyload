@@ -35,4 +35,4 @@ $.each($(".post-view[data-id]"),function(c,f){
   }),
       b.removeClass("view-load").text(item ? (h.value / item.value).toFixed(1).replace(rx, "$1") + item.symbol : "0"),
       h.value++,
-      "/"!=window.location.pathname&&(g?d.set(h):d.child("value").set(h.value))})});
+      "/"!=window.location.pathname&&(g?d.set(h):d.child("value").set(h.value))})})};
