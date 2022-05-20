@@ -11,7 +11,7 @@ ourText.animate({fontSize:finalNum+stringEnding},500)})});
 jQuery.getScript("//cdn.firebase.com/js/client/2.3.2/firebase.js").done(function(){
 $.each($(".post-view[data-id]"),function(c,f){
   var b=$(f).parent().find("#postviews").addClass("view-load"),
-      d=new Firebase("https://ctd-page-views-default-rtdb.firebaseio.com/pages/id/"+$(f).attr("data-id"));
+      d=new Firebase("Isi URL Firebase"+$(f).attr("data-id"));
   d.once("value",function(e){
     var h=e.val(),
         g=!1;
@@ -20,19 +20,6 @@ $.each($(".post-view[data-id]"),function(c,f){
               h.url=window.location.href,
               h.id=$(f).attr("data-id"),
               g=!0),
-       lookup = [
-    { value: 1, symbol: "" },
-    { value: 1e3, symbol: "k" },
-    { value: 1e6, symbol: "M" },
-    { value: 1e9, symbol: "G" },
-    { value: 1e12, symbol: "T" },
-    { value: 1e15, symbol: "P" },
-    { value: 1e18, symbol: "E" }
-  ],
-  rx = /\.0+$|(\.[0-9]*[1-9])0+$/,
-  item = lookup.slice().reverse().find(function(item) {
-    return h.value >= item.value;
-  }),
-      b.removeClass("view-load").text(item ? (h.value / item.value).toFixed(1).replace(rx, "$1") + item.symbol : "0"),
+      b.removeClass("view-load").text(Math.abs(h.value) > 999 ? Math.sign(h.value)*((Math.abs(h.value)/1000).toFixed(1)) + 'k' : Math.sign(h.value)*Math.abs(h.value)),
       h.value++,
       "/"!=window.location.pathname&&(g?d.set(h):d.child("value").set(h.value))})})};
