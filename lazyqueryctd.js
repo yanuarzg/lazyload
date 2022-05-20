@@ -1,6 +1,31 @@
 /*! pv */
-jQuery.getScript("//cdn.firebase.com/js/client/2.3.2/firebase.js").done(function(){
-$.each($(".post-view[data-id]"),function(e,a){var i=$(a).parent().find("#postviews").addClass("view-load"),t=new Firebase("https://ctd-page-views-default-rtdb.firebaseio.com/pages/id/"+$(a).attr("data-id"));t.once("value",function(e){var o=e.val(),d=!1;null==o&&((o={}).value=0,o.url=window.location.href,o.id=$(a).attr("data-id"),d=!0),i.removeClass("view-load").text(o.value),o.value++,"/"!=window.location.pathname&&(d?t.set(o):t.child("value").set(o.value))})})});
+$.each($(".post-view[data-id]"),function(c,f){
+  var b=$(f).parent().find("#postviews").addClass("view-load"),
+      d=new Firebase("https://ctd-page-views-default-rtdb.firebaseio.com/pages/id/"+$(f).attr("data-id"));
+  d.once("value",function(e){
+    var h=e.val(),
+        g=!1;
+    null==h&&(h={},
+              h.value=0,
+              h.url=window.location.href,
+              h.id=$(f).attr("data-id"),
+              g=!0),
+       lookup = [
+    { value: 1, symbol: "" },
+    { value: 1e3, symbol: "k" },
+    { value: 1e6, symbol: "M" },
+    { value: 1e9, symbol: "G" },
+    { value: 1e12, symbol: "T" },
+    { value: 1e15, symbol: "P" },
+    { value: 1e18, symbol: "E" }
+  ],
+  rx = /\.0+$|(\.[0-9]*[1-9])0+$/,
+  item = lookup.slice().reverse().find(function(item) {
+    return h.value >= item.value;
+  }),
+      b.removeClass("view-load").text(item ? (h.value / item.value).toFixed(1).replace(rx, "$1") + item.symbol : "0"),
+      h.value++,
+      "/"!=window.location.pathname&&(g?d.set(h):d.child("value").set(h.value))})});
 /*! wpac */
 wpac_init=window.wpac_init||[];wpac_init.push({widget:'Rating',id:31267,el:'wpac-rating-custom',html:'{{=it.stars}} {{?it.count>0}} {{=it.count}} {{=it.votes}}{{?}}'});(function(){if('WIDGETPACK_LOADED'in window)return;WIDGETPACK_LOADED=true;var mc=document.createElement('script');mc.type='text/javascript';mc.async=true;mc.src='https://cdn.widgetpack.com/widget.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(mc,s.nextSibling);})();
 /*! dsq */
