@@ -1,6 +1,5 @@
 /*! yang ngintip */
-jQuery.getScript("//cdn.firebase.com/v0/firebase.js").done(function(){
-$.each($(".post-view[data-id]"),function(e,a){var i=$(a).parent().find("#postviews").addClass("view-load"),t=new Firebase("https://ctd-counts-default-rtdb.firebaseio.com/pages/id/"+$(a).attr("data-id"));t.once("value",function(e){var o=e.val(),d=!1;null==o&&((o={}).value=0,o.url=window.location.href,o.id=$(a).attr("data-id"),d=!0),i.removeClass("view-load").text(o.value),o.value++,"/"!=window.location.pathname&&(d?t.set(o):t.child("value").set(o.value))})})});
+const convertSize=function(t){const o=["","KB","MB","GB","TB"];if(0==t)return"0";const n=parseInt(Math.floor(Math.log(t)/Math.log(1024)));return 0==n?t+" "+o[n]:(t/Math.pow(1024,n)).toFixed(1)+" "+o[n]}; $.each($('div[post-id]'), function(i, e) { var blogStats = new Firebase("https://ctd-counts-default-rtdb.firebaseio.com/pages/id/" + $(e).attr('post-id')); blogStats.once('value', function(snapshot) { var data = snapshot.val(); var isnew = false; if(data == null) { data= {}; data.value = 0; data.url = window.location.href; data.id = $(e).attr('post-id'); isnew = true; } $("#page-views").text(convertSize(data.value)); data.value++; if(window.location.pathname!='/') { if(isnew) blogStats.set(data); else blogStats.child('value').set(data.value); } }); }); 
 function UID(){
 var resnumb = '';
 var numbres = '1234567890';
