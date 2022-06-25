@@ -192,6 +192,3 @@ function showRecentComments(json) {
     }
   }
 }
-if(getTitles)
-  document.write('<script type="text/javascript" src="https://'+window.location.hostname+'/feeds/posts/summary?redirect=false'+maxResultsPosts+'&alt=json-in-script&callback=getPostUrlsForComments"></'+'script>');
-document.write('<script type="text/javascript" src="https://'+window.location.hostname+'/feeds/comments/default?redirect=false'+maxResultsComments+'&alt=json-in-script&callback=showRecentComments"></'+'script>');
