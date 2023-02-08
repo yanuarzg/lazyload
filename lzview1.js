@@ -1,7 +1,7 @@
 /*! yang ngintip */
 $.each($(".post-view[data-id]"),function(c,f){
   var b=$(f).parent().find("#postviews").addClass("view-load"),
-      d=new Firebase("https://ctd-page-views-default-rtdb.firebaseio.com/"+$(f).attr("data-id"));
+      d=new Firebase("https://ctd-rating-default-rtdb.firebaseio.com/"+$(f).attr("data-id"));
   d.once("value",function(e){
     var h=e.val(),
         g=!1;
